@@ -18,6 +18,8 @@ public class LoginController {
 	
 	@GetMapping("/")
 	public String redirectToLogin() {
+		LOG.info("METHOD: redirectToLogin()");
+		LOG.info("REDIRECT VIEW: login");
 		return "redirect:/login";
 	}
 	
@@ -26,20 +28,24 @@ public class LoginController {
 			@RequestParam(name="error", required=false) String error,
 			@RequestParam(name="logout", required=false) String logout) {
 		
+		LOG.info("METHOD: showLoginForm() -- PARAMS: error=" + error + ", logout=" + logout);
 		ModelAndView mav = new ModelAndView("login");
 		mav.addObject("userCredentials", new UserCredential());
 		mav.addObject("error", error);
 		mav.addObject("logout", logout);
+		LOG.info("RETURN VIEW: login");
 		return mav;
 	}
 	
 	@PostMapping("/logincheck")
 	public String loginCheck(@ModelAttribute(name="userCredentials") UserCredential userCredential) {
 		
-		LOG.info("CALL method: 'loginCheck()' -- Param: '" + userCredential.toString() + "'");
+		LOG.info("METHOD: loginCheck() -- PARAMS: '" + userCredential.toString() + "'");
 		if (userCredential.getUsername().equals("user") && userCredential.getPassword().equals("user")) {
+			LOG.info("RETURN VIEW: contacts");
 			return "contacts";
 		}
+		LOG.info("REDIRECT VIRE: login?error");
 		return "redirect:/login?error";
 	}
 }
