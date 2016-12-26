@@ -44,7 +44,7 @@ public class LoginController {
 		LOG.info("METHOD: loginCheck() -- PARAMS: '" + userCredential.toString() + "'");
 		if (userCredential.getUsername().equals("user") && userCredential.getPassword().equals("user")) {
 			LOG.info("RETURN VIEW: contacts");
-			return ViewConstant.CONTACTS;
+			return "redirect:/contacts/showcontacts";
 		}
 		LOG.info("REDIRECT VIRE: login?error");
 		return "redirect:/login?error";
