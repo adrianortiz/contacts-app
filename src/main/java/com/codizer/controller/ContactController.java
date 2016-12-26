@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.codizer.contact.ViewConstant;
-import com.codizer.entity.Contact;
 import com.codizer.model.ContactModel;
 import com.codizer.service.ConctactService;
 
