@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.codizer.contact.ViewConstant;
+import com.codizer.entity.Contact;
 import com.codizer.model.ContactModel;
 import com.codizer.service.ConctactService;
 
@@ -33,8 +34,17 @@ public class ContactController {
 	}
 	
 	@GetMapping("/contactform")
-	public String redirectContactForm(Model model) {
-		model.addAttribute("contactModel", new ContactModel());
+	public String redirectContactForm(
+			@RequestParam(name="id", required=false) int id,
+			Model model) {
+		
+		ContactModel contactModel = new ContactModel();
+		
+		if (id != 0) {
+			contactModel = contactService.findContactByIdModel(id);
+		}
+		
+		model.addAttribute("contactModel", contactModel);
 		return ViewConstant.CONTACT_FORM;
 	}
 	
