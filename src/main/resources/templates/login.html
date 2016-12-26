@@ -18,12 +18,15 @@
 
     <div class="container">
 
-      <form class="form-signin" action="#" th:action="@{/logincheck}" th:object="${userCredentials}" method="post">
+      <form class="form-signin" th:action="@{/logincheck}" method="POST">
+      
+      	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+      	
         <h2 class="form-signin-heading">Sign in</h2>
         <label for="inputEmail" class="sr-only">Username</label>
-        <input type="text" id="inputUsername" class="form-control" placeholder="Username" name="username" th:filed="*{username}"/>
+        <input type="text" class="form-control" placeholder="Username" name="username" id="username"/>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" th:field="*{password}"/>
+        <input type="password" class="form-control" placeholder="Password" name="password" id="password"/>
         
         <div class="alert alert-danger" role="alert" th:if="${error != null}">Invalid username or password!</div>
         <div class="alert alert-info" role="alert" th:if="${logout != null}">Logout successfully</div>

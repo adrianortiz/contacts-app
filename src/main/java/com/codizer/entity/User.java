@@ -18,13 +18,13 @@ public class User {
 	@Column(name = "username", unique=true, nullable=false, length=45)
 	private String username;
 	
-	@Column(name = "password", nullable=false, length=60)
+	@Column(name = "password", nullable=false, length=62)
 	private String password;
 	
 	@Column(name = "enable", nullable = false)
 	private boolean enable;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
 	private Set<UserRole> userRole = new HashSet<UserRole>();
 
 	public User(){}
