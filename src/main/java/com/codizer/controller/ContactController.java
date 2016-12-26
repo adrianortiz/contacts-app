@@ -4,6 +4,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +33,11 @@ public class ContactController {
 		return "redirect:/contacts/showcontacts";
 	}
 	
+	// Se puede usar tambien a nivel clase
+	// hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')
+	// permitAll()
+	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/contactform")
 	public String redirectContactForm(
 			@RequestParam(name="id", required=false) int id,
