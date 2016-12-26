@@ -1,6 +1,6 @@
 package com.codizer.converter;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+// import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -13,9 +13,11 @@ public class TestCrypt {
 	 *
 	 * @param args the arguments
 	 */
+	/*
 	public static void main(String[] args) {
 		BCryptPasswordEncoder pe = new BCryptPasswordEncoder();
 		System.out.println(pe.encode("secret"));
 	}
+	*/
 
 }

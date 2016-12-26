@@ -3,7 +3,10 @@ server:
     whitelabel:
       enabled: false
       
-spring:      
+spring:
+  thymeleaf:
+    cache: false # Ingnorar el cache para las plantillas thymeleaf
+    
   datasource:  # Config conexion a una BD
     url: jdbc:mysql://127.0.0.1:33060/mydb?useSSL=true
     username: homestead
