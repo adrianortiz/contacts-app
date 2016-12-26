@@ -10,4 +10,5 @@ import com.codizer.entity.Contact;
 @Repository("contactRepository")
 public interface ContactReporitory extends JpaRepository<Contact, Serializable> {
 
+	public abstract Contact findById(int id);
 }
