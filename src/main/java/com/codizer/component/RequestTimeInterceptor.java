@@ -16,17 +16,26 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.codizer.repository.LogRepository;
 
+// TODO: Auto-generated Javadoc
 // Permite realizar operaciones por cada peticion que se realiza
 
+/**
+ * The Class RequestTimeInterceptor.
+ */
 @Component("requestTimeInterceptor")
 public class RequestTimeInterceptor extends HandlerInterceptorAdapter {
 	
+	/** The log repository. */
 	@Autowired
 	@Qualifier("logRepository")
 	private LogRepository logRepository;
 	
+	/** The Constant LOG. */
 	private static final Log LOG = LogFactory.getLog(RequestTimeInterceptor.class);
 
+	/* (non-Javadoc)
+	 * @see org.springframework.web.servlet.handler.HandlerInterceptorAdapter#preHandle(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, java.lang.Object)
+	 */
 	// Se ejecuta antes de entrar al metodo controller
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
@@ -35,6 +44,9 @@ public class RequestTimeInterceptor extends HandlerInterceptorAdapter {
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.springframework.web.servlet.handler.HandlerInterceptorAdapter#afterCompletion(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, java.lang.Object, java.lang.Exception)
+	 */
 	// Se ejecuta justo antes de devolver la vista del navegador (antes del return de un metodo)
 	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)

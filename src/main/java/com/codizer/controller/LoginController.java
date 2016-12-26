@@ -9,11 +9,23 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.codizer.contact.ViewConstant;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class LoginController.
+ */
 @Controller
 public class LoginController {
 	
+	/** The Constant LOG. */
 	private static final Log LOG = LogFactory.getLog(LoginController.class);
 	
+	/**
+	 * Show login form.
+	 *
+	 * @param error the error
+	 * @param logout the logout
+	 * @return the model and view
+	 */
 	@GetMapping("/login")
 	public ModelAndView showLoginForm (
 			@RequestParam(name="error", required=false) String error,
@@ -27,6 +39,11 @@ public class LoginController {
 		return mav;
 	}
 	
+	/**
+	 * Login check.
+	 *
+	 * @return the string
+	 */
 	@GetMapping({"/loginsuccess", "/"})
 	public String loginCheck() {
 		LOG.info("METHOD: loginCheck()");

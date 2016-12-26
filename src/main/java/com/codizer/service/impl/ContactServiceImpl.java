@@ -13,23 +13,35 @@ import com.codizer.model.ContactModel;
 import com.codizer.repository.ContactReporitory;
 import com.codizer.service.ConctactService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ContactServiceImpl.
+ */
 @Service("contactServiceImpl")
 public class ContactServiceImpl implements ConctactService {
 
+	/** The contact reporitory. */
 	@Autowired
 	@Qualifier("contactRepository")
 	private ContactReporitory contactReporitory;
 	
+	/** The contact converter. */
 	@Autowired
 	@Qualifier("contactConverter")
 	private ContactConverter contactConverter;
 	
+	/* (non-Javadoc)
+	 * @see com.codizer.service.ConctactService#addContact(com.codizer.model.ContactModel)
+	 */
 	@Override
 	public ContactModel addContact(ContactModel contactModel) {
 		Contact contact = contactReporitory.save(contactConverter.converterContactModel2Contact(contactModel));
 		return contactConverter.converterContact2ContactModel(contact);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.codizer.service.ConctactService#listAllContacts()
+	 */
 	@Override
 	public List<ContactModel> listAllContacts() {
 		List<Contact> contacts = contactReporitory.findAll();
@@ -40,12 +52,18 @@ public class ContactServiceImpl implements ConctactService {
 		return contactsModel;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.codizer.service.ConctactService#findContactById(int)
+	 */
 	@Override
 	public Contact findContactById(int id) {
 		return contactReporitory.findById(id);
 	}
 	
 
+	/* (non-Javadoc)
+	 * @see com.codizer.service.ConctactService#removeContact(int)
+	 */
 	@Override
 	public void removeContact(int id) {
 		Contact contact = findContactById(id);
@@ -54,6 +72,9 @@ public class ContactServiceImpl implements ConctactService {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.codizer.service.ConctactService#findContactByIdModel(int)
+	 */
 	@Override
 	public ContactModel findContactByIdModel(int id) {
 		return contactConverter.converterContact2ContactModel(findContactById(id));

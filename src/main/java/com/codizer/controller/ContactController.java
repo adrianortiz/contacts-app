@@ -20,16 +20,27 @@ import com.codizer.contact.ViewConstant;
 import com.codizer.model.ContactModel;
 import com.codizer.service.ConctactService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ContactController.
+ */
 @Controller
 @RequestMapping("/contacts")
 public class ContactController {
 	
+	/** The Constant LOG. */
 	private static final Log LOG = LogFactory.getLog(ContactController.class);
 	
+	/** The contact service. */
 	@Autowired
 	@Qualifier("contactServiceImpl")
 	private ConctactService contactService;
 	
+	/**
+	 * Cancel.
+	 *
+	 * @return the string
+	 */
 	@GetMapping("/cancel")
 	public String cancel() {
 		return "redirect:/contacts/showcontacts";
@@ -39,6 +50,13 @@ public class ContactController {
 	// hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')
 	// permitAll()
 	
+	/**
+	 * Redirect contact form.
+	 *
+	 * @param id the id
+	 * @param model the model
+	 * @return the string
+	 */
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/contactform")
 	public String redirectContactForm(
@@ -55,6 +73,11 @@ public class ContactController {
 		return ViewConstant.CONTACT_FORM;
 	}
 	
+	/**
+	 * Show contact.
+	 *
+	 * @return the model and view
+	 */
 	@GetMapping("/showcontacts")
 	public ModelAndView showContact() {
 		ModelAndView mav = new ModelAndView(ViewConstant.CONTACTS);
@@ -66,6 +89,13 @@ public class ContactController {
 		return mav;
 	}
 	
+	/**
+	 * Adds the contact.
+	 *
+	 * @param contactModel the contact model
+	 * @param model the model
+	 * @return the string
+	 */
 	@PostMapping("/addcontact")
 	public String addContact(@ModelAttribute(name="contactModel") ContactModel contactModel,
 			Model model) {
@@ -80,6 +110,12 @@ public class ContactController {
 		return "redirect:/contacts/showcontacts";
 	}
 	
+	/**
+	 * Removes the contact.
+	 *
+	 * @param id the id
+	 * @return the model and view
+	 */
 	@GetMapping("/removecontact")
 	public ModelAndView removeContact(@RequestParam(name="id", required=true) int id) {
 		contactService.removeContact(id);

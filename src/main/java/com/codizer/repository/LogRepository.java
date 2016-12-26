@@ -7,6 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import com.codizer.entity.Log;
 
+/**
+ * The Interface LogRepository.
+ */
 @Repository("logRepository")
 public interface LogRepository extends JpaRepository<Log, Serializable> {
 
