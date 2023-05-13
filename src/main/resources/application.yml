@@ -8,9 +8,9 @@ spring:
     cache: false # Ingnorar el cache para las plantillas thymeleaf
     
   datasource:  # Config conexion a una BD
-    url: jdbc:mysql://127.0.0.1:33060/mydb?useSSL=true
-    username: homestead
-    password: secret
+    url: jdbc:mysql://127.0.0.1:3306/contactapp?useSSL=true
+    username: root
+    password:
     
   jpa:
     show-sql: true            # Muestra SQL en pantalla
